@@ -23,36 +23,43 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="/style.css" />
   </head>
-  <body class="flex justify-center">
-    <div class="w-1/2 bg-red-600">
-      <header class="flex justify-between">
+  <body>
+    <header
+      class="fixed top-0 left-0 w-full h-10 bg-white/70 z-50 backdrop-blur-xs border-b border-gray-300"
+    >
+      <div
+        class="flex justify-between text-xs text-gray-600 w-[50%] items-center w-[50%] mx-auto h-full"
+      >
         <div class="fName font-semibold text-sm">OT.</div>
-        <div class="flex font-">
-          <div>Experience</div>
-          <div>Projects</div>
-          <div>Stack</div>
-          <div>Contact</div>
-          <div>
-            <i class="fa-solid fa-circle-half-stroke"></i>
-          </div>
-          <div>
-            <i class="fa-solid fa-display"></i>
-          </div>
-          <div>
-            <i class="fa-regular fa-moon"></i>
+        <div class="flex gap-[10px] items-center">
+          <div><a href="#">Experience</a></div>
+          <div><a href="#">Projects</a></div>
+          <div><a href="#">Stack</a></div>
+          <div><a href="#">Contact</a></div>
+          <div
+            class="flex gap-[8px] border border-gray-300 bg-gray-200 rounded overflow-hidden p-[1px]"
+          >
+            <div class="bg-gray-400 px-[3px] rounded">
+              <i class="fa-solid fa-circle-half-stroke text-[8px]"></i>
+            </div>
+            <div class="px-[3px] rounded">
+              <i class="fa-solid fa-display text-[8px]"></i>
+            </div>
+            <div class="px-[3px] rounded">
+              <i class="fa-regular fa-moon text-[8px]"></i>
+            </div>
           </div>
         </div>
-      </header>
+      </div>
+    </header>
+    <div class="pt-15 pb-1000 w-[50%] self-center flex">
       <div>
-        <div>
-          <div></div>
-        </div>
+        <div class="w-[50px] h-[50px] bg-gray-400 rounded-full"></div>
         <div>
           <h3>Oyaniyi Timilehin</h3>
           <p>Frontend Developer & Aspiring Full-Stack Developer</p>
         </div>
       </div>
-      <div>heladj;kdfa</div>
     </div>
   </body>
 </html>
