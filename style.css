@@ -5,6 +5,7 @@
 body {
   font-family: var(--font-amarante);
 }
-.fName {
+.fName,
+.quotee {
   font-family: var(--font-birthstone);
 }
