@@ -28,14 +28,14 @@
       class="fixed top-0 left-0 w-full h-15 bg-white/70 z-50 backdrop-blur-xs border-b border-gray-300"
     >
       <div
-        class="flex justify-between text-md text-gray-600 w-[40%] items-center mx-auto h-full"
+        class="flex justify-between text-md sm:w-[100%] md:w-[40%] px-5 text-gray-600 items-center mx-auto h-full"
       >
         <div class="fName font-semibold">OT.</div>
         <div class="flex gap-[10px] items-center">
-          <div><a href="#">Experience</a></div>
-          <div><a href="#">Projects</a></div>
-          <div><a href="#">Stack</a></div>
-          <div><a href="#">Contact</a></div>
+          <div><a href="#" class="hidden md:block">Experience</a></div>
+          <!-- <div><a href="#">Projects</a></div> -->
+          <div><a href="#" class="hidden md:block">Stack</a></div>
+          <div><a href="#" class="hidden md:block">Contact</a></div>
           <div
             class="flex gap-[8px] border border-gray-300 bg-gray-200 rounded overflow-hidden p-[1px]"
           >
@@ -52,7 +52,9 @@
         </div>
       </div>
     </header>
-    <section class="pt-20 w-[40%] mx-auto flex justify-between">
+    <section
+      class="pt-20 w-full px-5 md:w-[40%] mx-auto flex flex-col md:flex-row justify-between"
+    >
       <div class="flex items-end gap-3">
         <div class="relative">
           <div
@@ -69,22 +71,24 @@
           ></div>
         </div>
         <div>
-          <h3 class="text-md">Oyaniyi Timilehin</h3>
-          <p class="text-sm text-gray-500">
+          <h3 class="text-xs md:text-md">Oyaniyi Timilehin</h3>
+          <p class="text-[8px] md:text-sm text-gray-500">
             Frontend Developer & Aspiring Full-Stack Developer
           </p>
         </div>
       </div>
       <div
-        class="bg-green-50 h-[50%] text-sm py-1 px-3 border border-green-300 rounded-full text-green-600 flex items-center gap-2"
+        class="bg-green-50 h-[50%] text-[8px] py-1 px-2 md:text-sm md:py-1 md:px-3 border border-green-300 rounded-full text-green-600 flex items-center gap-2 md:w-[150px] w-[100px] mt-5"
       >
         <div
-          class="h-[5px] w-[5px] rounded-full bg-green-600 animate-ping"
+          class="h-[3px] w-[3px] md:h-[5px] md:w-[5px] rounded-full bg-green-600 animate-ping"
         ></div>
         <div>available for work</div>
       </div>
     </section>
-    <div class="mx-auto w-[40%] flex gap-2 text-sm text-gray-400 mt-8 pl-3">
+    <div
+      class="mx-auto w-full md:w-[40%] flex flex-col md:flex-row gap-2 text-xs md:text-sm text-gray-400 mt-8 pl-5"
+    >
       <div class="flex gap-1 items-center">
         <iconify-icon icon="lucide:map-pin"></iconify-icon>
         <div>Ogun State, Nigeria</div>
@@ -95,7 +99,9 @@
         timilehinioyaniyi6@gmail.com
       </div>
     </div>
-    <p class="text-sm w-[40%] mx-auto my-3 text-gray-500 leading-[15px]">
+    <p
+      class="text-xs md:text-sm md:w-[40%] mx-auto my-3 text-gray-500 leading-[15px]"
+    >
       I build responsive web experiences with a focus on clean design, intuitive
       user experiences, and writing maintainable code. I'm passionate about
       frontend development and currently expanding my skills into backend
