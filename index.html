@@ -479,46 +479,58 @@
         </div>
       </article>
       <article class="w-[90%] md:w-1/2 text-sm">
-        <h2 class="text-xl mt-7">Send a Message</h2>
-        <p class="mt-2 text-gray-400">
-          Prefer to write? Fill out the form and I'll get back to you within 24
-          hours.
-        </p>
-        <div class="flex gap-2 mt-5">
-          <form>
-            <label class="block mb-2 font-medium text-gray-500"> Name </label>
-            <input
-              type="text"
-              placeholder="Your name"
-              class="w-full px-4 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-500"
-            />
-          </form>
-          <form>
-            <label class="block mb-2 font-medium text-gray-500"> Email </label>
-            <input
-              type="email"
-              placeholder="mail@example.com"
-              class="w-full px-4 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-500"
-            />
-          </form>
-        </div>
-        <div class="mt-5">
-          <label class="block mb-2 font-medium text-gray-500"> Message </label>
+        <form action="https://formspree.io/f/meaqnnzg" method="post">
+          <h2 class="text-xl mt-7">Send a Message</h2>
+          <p class="mt-2 text-gray-400">
+            Prefer to write? Fill out the form and I'll get back to you within
+            24 hours.
+          </p>
+          <div class="flex gap-2 mt-5">
+            <div>
+              <label class="block mb-2 font-medium text-gray-500"> Name </label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Your name"
+                class="w-full px-4 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-500"
+                required
+              />
+            </div>
+            <div>
+              <label class="block mb-2 font-medium text-gray-500">
+                Email
+              </label>
+              <input
+                type="email"
+                name="email"
+                placeholder="mail@example.com"
+                class="w-full px-4 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-500"
+                required
+              />
+            </div>
+          </div>
+          <div class="mt-5">
+            <label class="block mb-2 font-medium text-gray-500">
+              Message
+            </label>
 
-          <textarea
-            rows="5"
-            class="w-full border border-gray-300 rounded-lg px-4 py-3 resize-none focus:outline-none focus:ring-2 focus:ring-gray-500"
-            placeholder="Tell me about your project..."
-          ></textarea>
-        </div>
+            <textarea
+              rows="5"
+              name="message"
+              class="w-full border border-gray-300 rounded-lg px-4 py-3 resize-none focus:outline-none focus:ring-2 focus:ring-gray-500"
+              required
+              placeholder="Tell me about your project..."
+            ></textarea>
+          </div>
 
-        <button
-          type="submit"
-          class="w-[40%] bg-black text-white py-2 rounded-lg hover:bg-gray-900 transition mt-4 items-center flex justify-center gap-2 ml-2"
-        >
-          <iconify-icon icon="lucide:send"></iconify-icon>
-          Send Message
-        </button>
+          <button
+            type="submit"
+            class="w-[40%] bg-black text-white py-2 rounded-lg hover:bg-gray-900 transition mt-4 items-center flex justify-center gap-2 ml-2 cursor-pointer"
+          >
+            <iconify-icon icon="lucide:send"></iconify-icon>
+            Send Message
+          </button>
+        </form>
       </article>
     </section>
     <section
