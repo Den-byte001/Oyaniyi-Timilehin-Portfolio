@@ -9,3 +9,7 @@ body {
 .quotee {
   font-family: var(--font-birthstone);
 }
+
+html {
+  scroll-behavior: smooth;
+}
