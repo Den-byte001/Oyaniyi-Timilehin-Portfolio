@@ -1,7 +1,12 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --font-birthstone: "Birthstone", cursive;
   --font-amarante: "Amarante", serif;
 }
+
 body {
   font-family: var(--font-amarante);
 }
