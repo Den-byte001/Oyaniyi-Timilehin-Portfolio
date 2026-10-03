@@ -18,3 +18,179 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes header-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+body > header {
+  animation: header-enter 480ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+body > section:first-of-type > div:first-child > div:first-child,
+body > section:first-of-type > div:first-child > div:last-child > h3,
+body > section:first-of-type > div:first-child > div:last-child > p,
+body > section:first-of-type > div:last-child,
+body > div:nth-of-type(1),
+body > p,
+body > div:nth-of-type(2) {
+  animation: fade-up 560ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+body > section:first-of-type > div:first-child > div:first-child {
+  animation-delay: 80ms;
+}
+
+body > section:first-of-type > div:first-child > div:last-child > h3 {
+  animation-delay: 120ms;
+}
+
+body > section:first-of-type > div:first-child > div:last-child > p {
+  animation-delay: 180ms;
+}
+
+body > section:first-of-type > div:last-child {
+  animation-delay: 220ms;
+}
+
+body > div:nth-of-type(1) {
+  animation-delay: 180ms;
+}
+
+body > p {
+  animation-delay: 240ms;
+}
+
+body > div:nth-of-type(2) {
+  animation-delay: 300ms;
+}
+
+html.theme-ready :where(body, body *) {
+  transition-property: color, background-color, border-color;
+  transition-duration: 220ms;
+  transition-timing-function: ease;
+}
+
+html.motion-ready .scroll-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 520ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 520ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+html.motion-ready .scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+header a[href^="#"] {
+  position: relative;
+  transition: color 180ms ease;
+}
+
+header a[href^="#"]::after {
+  position: absolute;
+  right: 0;
+  bottom: -4px;
+  left: 0;
+  height: 1px;
+  background: currentColor;
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 180ms ease;
+}
+
+header a[href^="#"]:hover::after,
+header a[href^="#"]:focus-visible::after {
+  transform: scaleX(1);
+}
+
+#experience article > .flex.gap-3.mb-5 > div:last-child {
+  transition:
+    transform 220ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    border-color 220ms ease;
+}
+
+body > div:nth-of-type(2) > div {
+  transition: transform 180ms ease;
+}
+
+body > section:last-of-type article:last-child a {
+  display: inline-flex;
+  transition:
+    color 180ms ease,
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+button {
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+@media (hover: hover) {
+  #experience article > .flex.gap-3.mb-5 > div:last-child:hover {
+    border-color: rgb(22 163 74);
+    transform: translateY(-3px);
+  }
+
+  body > div:nth-of-type(2) > div:hover {
+    transform: translateY(-2px);
+  }
+
+  body > section:last-of-type article:last-child a:hover {
+    opacity: 0.72;
+    transform: translateY(-2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  html.motion-ready .scroll-reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

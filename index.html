@@ -25,6 +25,19 @@
     <style type="text/tailwindcss">
       @custom-variant dark (&:where(.dark, .dark *));
     </style>
+    <script>
+      try {
+        const savedTheme = localStorage.getItem("theme") || "system";
+        const systemDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+
+        document.documentElement.classList.toggle(
+          "dark",
+          savedTheme === "dark" || (savedTheme === "system" && systemDark),
+        );
+      } catch {}
+    </script>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body class="mb-20 bg-white dark:bg-black">
@@ -525,7 +538,7 @@
                 type="text"
                 name="name"
                 placeholder="Your name"
-                class="w-full px-4 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-500 dark:border-gray-500"
+                class="w-full px-4 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-500 dark:border-gray-500 dark:placeholder:text-gray-500"
                 required
               />
             </div>
@@ -537,7 +550,7 @@
                 type="email"
                 name="email"
                 placeholder="mail@example.com"
-                class="w-full px-4 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-500 dark:border-gray-500"
+                class="w-full px-4 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-500 dark:border-gray-500 dark:placeholder:text-gray-500"
                 required
               />
             </div>
@@ -550,7 +563,7 @@
             <textarea
               rows="5"
               name="message"
-              class="w-full border border-gray-300 rounded-lg px-4 py-3 resize-none focus:outline-none focus:ring-2 focus:ring-gray-500 dark:border-gray-500"
+              class="w-full border border-gray-300 rounded-lg px-4 py-3 resize-none focus:outline-none focus:ring-2 focus:ring-gray-500 dark:border-gray-500 dark:placeholder:text-gray-500"
               required
               placeholder="Tell me about your project..."
             ></textarea>
@@ -558,7 +571,7 @@
 
           <button
             type="submit"
-            class="w-[40%] bg-black text-white py-2 rounded-lg hover:bg-gray-900 transition mt-4 items-center flex justify-center gap-2 ml-2 cursor-pointer dark:bg-white dark:text-black"
+            class="w-[40%] bg-black text-white py-2 rounded-lg hover:bg-gray-900 dark:hover:bg-gray-500 dark:hover:text-gray-300 transition mt-4 items-center flex justify-center gap-2 ml-2 cursor-pointer dark:bg-white dark:text-black"
           >
             <iconify-icon icon="lucide:send"></iconify-icon>
             Send Message
