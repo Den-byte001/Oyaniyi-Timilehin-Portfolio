@@ -22,7 +22,10 @@
       rel="stylesheet"
     />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="/style.css" />
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+    </style>
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body class="mb-20 bg-white dark:bg-black">
     <header
@@ -44,21 +47,21 @@
           >
             <button
               class="hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer px-[3px] rounded"
+              id="lightBtn"
             >
-              <i
-                class="fa-solid fa-circle-half-stroke text-sm"
-                id="lightBtn"
-              ></i>
+              <i class="fa-solid fa-circle-half-stroke text-sm"></i>
             </button>
             <button
               class="hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer px-[3px] rounded"
+              id="systemBtn"
             >
-              <i class="fa-solid fa-display text-sm" id="systemBtn"></i>
+              <i class="fa-solid fa-display text-sm"></i>
             </button>
             <button
               class="hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer px-[3px] rounded"
+              id="darkBtn"
             >
-              <i class="fa-regular fa-moon text-sm" id="darkBtn"></i>
+              <i class="fa-regular fa-moon text-sm"></i>
             </button>
           </div>
         </div>

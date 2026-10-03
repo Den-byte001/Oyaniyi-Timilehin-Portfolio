@@ -3,6 +3,7 @@ const html = document.documentElement;
 const lightBtn = document.getElementById("lightBtn");
 const systemBtn = document.getElementById("systemBtn");
 const darkBtn = document.getElementById("darkBtn");
+const systemPreference = window.matchMedia("(prefers-color-scheme: dark)");
 
 function applyTheme(theme) {
   if (theme === "dark") {
@@ -14,11 +15,7 @@ function applyTheme(theme) {
   }
 
   if (theme === "system") {
-    const systemDark = window.matchMedia(
-      "(prefers-color-scheme: dark)",
-    ).matches;
-
-    html.classList.toggle("dark", systemDark);
+    html.classList.toggle("dark", systemPreference.matches);
   }
 
   localStorage.setItem("theme", theme);
@@ -34,6 +31,12 @@ systemBtn.addEventListener("click", () => {
 
 darkBtn.addEventListener("click", () => {
   applyTheme("dark");
+});
+
+systemPreference.addEventListener("change", (event) => {
+  if (localStorage.getItem("theme") === "system") {
+    html.classList.toggle("dark", event.matches);
+  }
 });
 
 // Load saved theme
