@@ -25,10 +25,7 @@ function applyTheme(theme) {
 }
 
 function transitionTheme(theme, button) {
-  if (
-    prefersReducedMotion.matches ||
-    typeof document.startViewTransition !== "function"
-  ) {
+  if (prefersReducedMotion.matches) {
     applyTheme(theme);
     return;
   }
@@ -46,6 +43,23 @@ function transitionTheme(theme, button) {
   html.style.setProperty("--theme-origin-x", `${originX}px`);
   html.style.setProperty("--theme-origin-y", `${originY}px`);
   html.style.setProperty("--theme-reveal-radius", `${radius}px`);
+
+  if (typeof document.startViewTransition !== "function") {
+    const nextThemeIsDark =
+      theme === "dark" || (theme === "system" && systemPreference.matches);
+    html.style.setProperty(
+      "--theme-overlay-color",
+      nextThemeIsDark ? "#000" : "#fff",
+    );
+    html.classList.add("theme-fallback-transition");
+    window.setTimeout(() => applyTheme(theme), 450);
+    window.setTimeout(
+      () => html.classList.remove("theme-fallback-transition"),
+      680,
+    );
+    return;
+  }
+
   html.classList.add("theme-transition");
 
   const transition = document.startViewTransition(() => applyTheme(theme));
