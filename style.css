@@ -91,6 +91,22 @@ html.theme-ready :where(body, body *) {
   transition-timing-function: ease;
 }
 
+#lightBtn[aria-pressed="true"],
+#systemBtn[aria-pressed="true"],
+#darkBtn[aria-pressed="true"] {
+  background-color: #fff;
+  color: #111;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 16%);
+}
+
+html.dark #lightBtn[aria-pressed="true"],
+html.dark #systemBtn[aria-pressed="true"],
+html.dark #darkBtn[aria-pressed="true"] {
+  background-color: #27272a;
+  color: #fff;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 45%);
+}
+
 html.theme-transition::view-transition-old(root) {
   animation: none;
 }

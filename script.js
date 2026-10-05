@@ -21,10 +21,21 @@ function applyTheme(theme) {
     html.classList.toggle("dark", systemPreference.matches);
   }
 
+  lightBtn.setAttribute("aria-pressed", String(theme === "light"));
+  systemBtn.setAttribute("aria-pressed", String(theme === "system"));
+  darkBtn.setAttribute("aria-pressed", String(theme === "dark"));
   localStorage.setItem("theme", theme);
 }
 
 function transitionTheme(theme, button) {
+  const nextThemeIsDark =
+    theme === "dark" || (theme === "system" && systemPreference.matches);
+
+  if (html.classList.contains("dark") === nextThemeIsDark) {
+    applyTheme(theme);
+    return;
+  }
+
   if (prefersReducedMotion.matches) {
     applyTheme(theme);
     return;
@@ -45,8 +56,6 @@ function transitionTheme(theme, button) {
   html.style.setProperty("--theme-reveal-radius", `${radius}px`);
 
   if (typeof document.startViewTransition !== "function") {
-    const nextThemeIsDark =
-      theme === "dark" || (theme === "system" && systemPreference.matches);
     html.style.setProperty(
       "--theme-overlay-color",
       nextThemeIsDark ? "#000" : "#fff",
