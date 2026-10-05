@@ -4,6 +4,9 @@ const lightBtn = document.getElementById("lightBtn");
 const systemBtn = document.getElementById("systemBtn");
 const darkBtn = document.getElementById("darkBtn");
 const systemPreference = window.matchMedia("(prefers-color-scheme: dark)");
+const prefersReducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)",
+);
 
 function applyTheme(theme) {
   if (theme === "dark") {
@@ -21,16 +24,47 @@ function applyTheme(theme) {
   localStorage.setItem("theme", theme);
 }
 
+function transitionTheme(theme, button) {
+  if (
+    prefersReducedMotion.matches ||
+    typeof document.startViewTransition !== "function"
+  ) {
+    applyTheme(theme);
+    return;
+  }
+
+  const bounds = button.getBoundingClientRect();
+  const originX = bounds.left + bounds.width / 2;
+  const originY = bounds.top + bounds.height / 2;
+  const radius = Math.max(
+    Math.hypot(originX, originY),
+    Math.hypot(window.innerWidth - originX, originY),
+    Math.hypot(originX, window.innerHeight - originY),
+    Math.hypot(window.innerWidth - originX, window.innerHeight - originY),
+  );
+
+  html.style.setProperty("--theme-origin-x", `${originX}px`);
+  html.style.setProperty("--theme-origin-y", `${originY}px`);
+  html.style.setProperty("--theme-reveal-radius", `${radius}px`);
+  html.classList.add("theme-transition");
+
+  const transition = document.startViewTransition(() => applyTheme(theme));
+  transition.finished.then(
+    () => html.classList.remove("theme-transition"),
+    () => html.classList.remove("theme-transition"),
+  );
+}
+
 lightBtn.addEventListener("click", () => {
-  applyTheme("light");
+  transitionTheme("light", lightBtn);
 });
 
 systemBtn.addEventListener("click", () => {
-  applyTheme("system");
+  transitionTheme("system", systemBtn);
 });
 
 darkBtn.addEventListener("click", () => {
-  applyTheme("dark");
+  transitionTheme("dark", darkBtn);
 });
 
 systemPreference.addEventListener("change", (event) => {
@@ -47,10 +81,6 @@ applyTheme(savedTheme);
 requestAnimationFrame(() => {
   html.classList.add("theme-ready");
 });
-
-const prefersReducedMotion = window.matchMedia(
-  "(prefers-reduced-motion: reduce)",
-);
 
 if (!prefersReducedMotion.matches && "IntersectionObserver" in window) {
   const revealTargets = document.querySelectorAll(

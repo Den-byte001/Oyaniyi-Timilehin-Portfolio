@@ -91,6 +91,28 @@ html.theme-ready :where(body, body *) {
   transition-timing-function: ease;
 }
 
+html.theme-transition::view-transition-old(root) {
+  animation: none;
+}
+
+html.theme-transition::view-transition-new(root) {
+  animation: theme-reveal 680ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes theme-reveal {
+  from {
+    clip-path: circle(
+      0 at var(--theme-origin-x) var(--theme-origin-y)
+    );
+  }
+
+  to {
+    clip-path: circle(
+      var(--theme-reveal-radius) at var(--theme-origin-x) var(--theme-origin-y)
+    );
+  }
+}
+
 html.motion-ready .scroll-reveal {
   opacity: 0;
   transform: translateY(16px);
